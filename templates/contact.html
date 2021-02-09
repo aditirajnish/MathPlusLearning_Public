@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %} Contact Us {% endblock %}
+
+{% block content %}
+
+    {% if valid %}
+        <div class="text-break form-desc">
+            <h3>Thank you for submitting your question! We will get back to you in 1-3 business days.</h3>
+            <br>
+            <h3>To submit a new question, click <a href="{{ url_for('contact') }}">here</a>.</h3>
+        </div>
+    {% else %}
+        <div class="text-break form-desc">
+            <h3>Use the form below or drop us an email at <a href="mailto:mathplusdigital@gmail.com">mathplusdigital@gmail.com</a></h3>
+        </div>
+    {% endif %}
+
+    {% if form %}
+    <div class="container">
+        <form action="{{url_for('contact')}}" method="POST">
+            <div class="row g-3">
+                <div class="form-floating col">
+                    {{ form.first_name }}
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="form-floating col">
+                    {{ form.last_name }}
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="form-floating col">
+                    {{ form.email }}
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating col">
+                    {{ form.phone }}
+                    <label for="phone">Phone</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% if form.email.errors[0] %}
+                        <p style="color:red;"> {{ form.email.errors[0] }} </p>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {% if form.phone.errors[0] %}
+                        <p style="color:red;"> {{ form.phone.errors[0] }} </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-floating">
+                {{ form.question }}
+                <label for="textarea">Tell us about your question</label>
+            </div>
+            {{ form.csrf_token }}
+            {{ form.submit }}
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}
+
+
+

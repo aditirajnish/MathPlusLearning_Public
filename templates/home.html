@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <video autoplay="autoplay" loop="loop" style="width: 90%;min-width: 400px;margin-top: 5%;">
+                    <source type="video/mp4" src="{{ url_for('static', filename='media/home/MathPlus_Home.mp4') }}">
+                </video>
+            </div>
+
+            <div class="col-lg-6" style="margin-top: 3%">
+                <h4>Math Plus Learning is a virtual tutorial based out of Milton, Ontario.
+                    We provide live online math lessons for students in grades 7-12, as well as university level math.</h4>
+                <h4>Our experienced tutors are well-versed in teaching the Ontario math curriculum,
+                    as well as tutoring the Advanced Placement (A.P.) and International Baccalaureate (I.B.) curricula.</h4>
+                <h4>We take advantage of virtual tools, such as digital whiteboards and online homework submission,
+                    to demonstrate concepts and maximize our students' potential.</h4>
+                <h4>Have a question? Click <a href="{{ url_for('contact') }}">here</a>.</h4>
+                <h4>Ready to enroll your child at Math Plus Learning? Click <a href="{{ url_for('enroll') }}">here</a>.</h4>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

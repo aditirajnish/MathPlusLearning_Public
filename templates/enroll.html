@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %} Enroll Now {% endblock %}
+
+{% block content %}
+
+    {% if valid %}
+        <div class="text-break form-desc">
+            <h3>Thank you for enrolling! We will schedule your child's assessment in 1-3 business days.</h3>
+            <br>
+            <h3>To submit another enrollment form, click <a href="{{ url_for('enroll') }}">here</a>.</h3>
+        </div>
+    {% else %}
+        <div class="text-break form-desc">
+            <h3>Use the form below to enroll your child at Math Plus Learning</h3>
+        </div>
+    {% endif %}
+
+    {% if form %}
+    <div class="container">
+        <form action="{{url_for('enroll')}}" method="POST">
+            <div class="row g-3">
+                <div class="form-floating col">
+                    {{ form.parent_first_name }}
+                    <label for="parent_first_name">Parent's First Name</label>
+                </div>
+                <div class="form-floating col">
+                    {{ form.parent_last_name }}
+                    <label for="parent_last_name">Parent's Last Name</label>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="form-floating col">
+                    {{ form.parent_email }}
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating col">
+                    {{ form.parent_phone }}
+                    <label for="phone">Phone</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% if form.parent_email.errors[0] %}
+                        <p style="color:red;"> {{ form.parent_email.errors[0] }} </p>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {% if form.parent_phone.errors[0] %}
+                        <p style="color:red;"> {{ form.parent_phone.errors[0] }} </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-floating">
+                {{ form.find_us }}
+                <label for="find">How did you find us (ex. referral)?</label>
+            </div>
+            <div class="row g-3">
+                <div class="form-floating col">
+                    {{ form.student_name }}
+                    <label for="student_name">Student's Name</label>
+                </div>
+                <div class="form-floating col">
+                    {{ form.student_grade }}
+                    <label for="grade">Student's Grade</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% if form.student_name.errors[1] %}
+                        <p style="color:red;"> {{ form.student_name.errors[1] }} </p>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {% if form.student_grade.errors[1] %}
+                        <p style="color:red;"> {{ form.student_grade.errors[1] }} </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-floating">
+                {{ form.comments }}
+                <label for="comments">Any additional information</label>
+            </div>
+            {{ form.csrf_token }}
+            {{ form.submit }}
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}

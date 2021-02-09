@@ -1,0 +1,27 @@
+.navbar-brand button{
+    max-width: 300px;
+}
+
+.navbar-collapse button{
+    max-width: 200px;
+}
+
+nav button:hover{
+    box-shadow: 0 15px 15px 0 #433d3c;
+}
+
+a{
+    text-decoration: none;
+}
+
+input, textarea{
+    margin: 3%;
+    margin-left: 0;
+    margin-top: 1%;
+}
+
+.form-desc{
+    text-align: center;
+    margin: 3%;
+    margin-bottom: 30px;
+}
