@@ -2,10 +2,9 @@ from flask import Flask, render_template, url_for
 from forms import ContactForm, EnrollForm
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import secrets
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secrets.token_urlsafe(20)
+app.config.from_json("config.json")
 
 @app.route('/')
 def home():
